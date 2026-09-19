@@ -1,0 +1,18 @@
+<section aria-labelledby="notes-heading">
+  <h1 id="notes-heading">Notes</h1>
+  <ul class="list-rows">
+    @for (note of notes$ | async; track note.slug) {
+      <li class="row">
+        <div class="meta">
+          <time [attr.datetime]="note.date">{{ note.date | date:'mediumDate' }}</time>
+          <span class="category">{{ categoryLabel }}</span>
+        </div>
+        <div class="content">
+          <a [routerLink]="['/notes', note.slug]" class="title">{{ note.title }}</a>
+          <p class="summary">{{ firstLine(note.body) }}</p>
+        </div>
+      </li>
+    }
+  </ul>
+  @if ((notes$ | async)?.length === 0) { <div class="empty">No notes yet — short notes will appear here.</div> }
+</section>

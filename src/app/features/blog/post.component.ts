@@ -9,24 +9,8 @@ import { readingTimeMinutes } from '../../core/utils/reading-time';
   selector: 'app-post',
   standalone: true,
   imports: [CommonModule, MarkdownModule],
-  template: `
-    <article *ngIf="post$ | async as post; else notFound">
-      <h1>{{ post.title }}</h1>
-      <div class="meta">
-        <time [attr.datetime]="post.date">{{ post.date | date:'longDate' }}</time>
-        <span class="reading">{{ readingTime(post.body) }} min</span>
-      </div>
-      <div class="tags">
-        <span *ngFor="let t of post.tags" class="tag" [title]="t">{{ lastSegment(t) }}</span>
-      </div>
-      <hr />
-      <markdown [data]="post.body"></markdown>
-    </article>
-    <ng-template #notFound>
-      <p class="empty">Post not found.</p>
-    </ng-template>
-  `,
-  styles: [``],
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostComponent {

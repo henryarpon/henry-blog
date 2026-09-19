@@ -1,0 +1,16 @@
+@if (post$ | async; as post) {
+  <article>
+    <h1>{{ post.title }}</h1>
+    <div class="meta">
+      <time [attr.datetime]="post.date">{{ post.date | date:'longDate' }}</time>
+      <span class="reading">{{ readingTime(post.body) }} min</span>
+    </div>
+    <div class="tags">
+      @for (t of post.tags; track t) { <span class="tag" [title]="t">{{ lastSegment(t) }}</span> }
+    </div>
+    <hr />
+    <markdown [data]="post.body"></markdown>
+  </article>
+} @else {
+  <p class="empty">Post not found.</p>
+}

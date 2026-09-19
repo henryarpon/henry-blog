@@ -1,14 +1,14 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { siteConfig } from '../../core/config/site.config';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  template: `
-    <article>
-      <h1>About</h1>
-      <p class="muted">Short bio and links. Replace this placeholder copy with your real bio.</p>
-    </article>
-  `,
+  imports: [CommonModule],
+  templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AboutComponent {}
+export class AboutComponent {
+  site = siteConfig;
+}

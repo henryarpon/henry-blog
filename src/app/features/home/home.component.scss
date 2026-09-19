@@ -1,0 +1,6 @@
+/* Home specific tweaks; layout/styling continues to rely on global tokens */
+.recent-section .title { font-family: var(--font-ui); font-weight:700; font-size:1.00rem; }
+.recent-section h2 { font-family: var(--font-ui); font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.6rem; font-size:0.92rem; }
+.recent-activity h2 { font-family: var(--font-ui); font-weight:700; text-transform:uppercase; letter-spacing:0.08em; font-size:0.92rem; }
+.list-rows .row .content .title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.list-rows .row .tags { margin-top:0; display:flex; gap:0.45rem; align-items:center; }

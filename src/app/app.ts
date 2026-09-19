@@ -8,18 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent, HttpClientModule],
-  template: `
-    <app-header></app-header>
-    <main class="site-main">
-      <div class="container">
-        <router-outlet></router-outlet>
-      </div>
-    </main>
-    <app-footer></app-footer>
-  `,
-  styles: [``],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App {
-  protected readonly title = signal('Henry Blog');
+  protected readonly title = signal('dev/henry');
 }

@@ -1,0 +1,10 @@
+<article>
+  <h1>About</h1>
+  <p class="muted">{{ site.intro }}</p>
+  <section aria-labelledby="links">
+    <h2 id="links">Links</h2>
+    <ul>
+      @for (f of site.footerLinks; track f.url) { <li><a [href]="f.url" target="_blank" rel="noopener noreferrer">{{ f.title }}</a></li> }
+    </ul>
+  </section>
+</article>

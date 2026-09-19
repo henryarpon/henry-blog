@@ -1,0 +1,24 @@
+<section aria-labelledby="references-heading">
+  <h1 id="references-heading">References</h1>
+  <p class="lead">Find my YouTube videos below — <a [href]="channelUrl" target="_blank" rel="noopener noreferrer">my channel</a>.</p>
+
+  @if ((videos$ | async)?.length === 0) {
+    <div class="empty">No videos yet — posted videos will appear here.</div>
+  } @else {
+    <div class="grid">
+      @for (v of videos$ | async; track v.id) {
+        <article class="video-card" role="listitem">
+          <a [href]="videoUrl(v.videoId)" target="_blank" rel="noopener noreferrer">
+            <div class="thumb" role="img" aria-label="Video thumbnail">
+              <img [src]="'https://i.ytimg.com/vi/' + v.videoId + '/hqdefault.jpg'" alt="Thumbnail for {{ v.title }}" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">{{ v.title }}</h3>
+              <p class="card-desc">{{ v.description }}</p>
+            </div>
+          </a>
+        </article>
+      }
+    </div>
+  }
+</section>

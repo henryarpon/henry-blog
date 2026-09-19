@@ -1,0 +1,18 @@
+<section aria-labelledby="reading-heading">
+  <h1 id="reading-heading">Reading</h1>
+
+  <ul class="list-rows">
+    @for (l of links$ | async; track l.id) {
+      <li class="row">
+        <a class="title" [href]="l.url" target="_blank" rel="noopener noreferrer">{{ l.title }}</a>
+        <div class="meta-small">
+          <span class="source">{{ l.source }}</span>
+          <time [attr.datetime]="l.date"> · {{ l.date | date:'mediumDate' }}</time>
+        </div>
+        <div class="tags">@for (t of l.tags; track t) { <span class="tag" [title]="t">{{ lastSegment(t) }}</span> }</div>
+      </li>
+    }
+  </ul>
+
+  @if ((links$ | async)?.length === 0) { <div class="empty">No reading links yet — saved articles will appear here.</div> }
+</section>

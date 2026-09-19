@@ -1,7 +1,7 @@
 export const siteConfig = {
-  siteName: 'Henry Blog',
+  siteName: 'dev/henry',
   tagline: 'Notes on building software',
-  intro: 'I write about software design, operations, and what I learn building things. This is a quiet, text-first space for posts, notes and references.',
+  intro: "This is where I write down what I'm learning and building: software design, operations, and lessons from real projects. Occasionally I write about life too. Read the latest posts, browse my notes or learn more about me",
   channelUrl: 'https://www.youtube.com/channel/UC-PLACEHOLDER',
   footerLinks: [
     { title: 'GitHub', url: 'https://github.com/' },

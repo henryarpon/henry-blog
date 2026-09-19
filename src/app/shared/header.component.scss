@@ -1,0 +1,11 @@
+.site-header { border-bottom: 1px solid var(--border); }
+.header-inner { display:flex; gap:1rem; align-items:center; padding:0.6rem 1rem; }
+.site-title { font-weight:700; text-decoration:none; }
+.main-nav { display:flex; gap:1rem; margin-left:auto; }
+.main-nav a { color:var(--muted); text-decoration: none; font-family: var(--font-mono); font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; }
+.main-nav a:hover, .main-nav a:focus { color:var(--text); }
+.header-actions { margin-left:0.5rem; }
+.theme-toggle { background:transparent; border:1px solid var(--border); padding:0.35rem; border-radius:6px; color:var(--muted); display:flex; align-items:center; justify-content:center; }
+.theme-toggle svg { display:block; }
+.theme-toggle:focus { outline:2px solid var(--border); }
+@media (max-width:640px) { .main-nav { display:none; } }

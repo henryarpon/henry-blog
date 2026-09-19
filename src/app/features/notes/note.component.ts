@@ -9,20 +9,8 @@ import { readingTimeMinutes } from '../../core/utils/reading-time';
   selector: 'app-note',
   standalone: true,
   imports: [CommonModule, MarkdownModule],
-  template: `
-    <article *ngIf="note$ | async as note; else notFound">
-      <h1>{{ note.title }}</h1>
-      <div class="meta">
-        <time [attr.datetime]="note.date">{{ note.date | date:'longDate' }}</time>
-      </div>
-      <hr />
-      <markdown [data]="note.body"></markdown>
-    </article>
-    <ng-template #notFound>
-      <p class="empty">Note not found.</p>
-    </ng-template>
-  `,
-  styles: [``],
+  templateUrl: './note.component.html',
+  styleUrls: ['./note.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NoteComponent {

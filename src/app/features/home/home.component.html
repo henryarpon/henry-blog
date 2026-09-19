@@ -1,0 +1,58 @@
+<article>
+  <header>
+    <p class="lead">{{ site.intro }} <a routerLink="/about">here</a></p>
+  </header>
+
+  <section class="recent-section" aria-labelledby="recent-posts">
+    <h2 id="recent-posts">Recent posts</h2>
+    <ul class="list-rows">
+      @for (p of recentPosts$ | async; track p.slug) {
+        <li class="row">
+          <div class="meta"><time [attr.datetime]="p.date">{{ p.date | date:'mediumDate' }}</time><span class="category">{{ postCategory }}</span></div>
+          <div class="content">
+            <a [routerLink]="['/blog', p.slug]" class="title">{{ p.title }}</a>
+          </div>
+        </li>
+      }
+    </ul>
+    @if ((recentPosts$ | async)?.length === 0) { <div class="empty">No posts yet — your published posts will appear here.</div> }
+
+    <div class="see-all">
+      <a routerLink="/blog">See all {{ counts?.posts ?? 0 }} posts →</a>
+    </div>
+  </section>
+
+  <hr />
+
+  <section class="recent-activity" aria-labelledby="recent-activity">
+    <h2 id="recent-activity">Recent activity</h2>
+    <ul class="list-rows">
+      @for (item of activity$ | async; track item.id) {
+        <li class="row">
+          <div class="meta small">
+            <time [attr.datetime]="item.date">{{ item.date | date:'mediumDate' }}</time>
+            <span class="category">{{ itemCategory(item) }}</span>
+          </div>
+          <div class="content">
+            <div class="title-row">
+              <ng-container [ngSwitch]="item.type">
+                <a *ngSwitchCase="'note'" [routerLink]="noteLink(item)" class="title">{{ item.title }}</a>
+                <a *ngSwitchCase="'video'" [href]="videoHref(item)" target="_blank" rel="noopener noreferrer" class="title">{{ item.title }}</a>
+                <a *ngSwitchCase="'link'" [href]="linkHref(item)" target="_blank" rel="noopener noreferrer" class="title">{{ item.title }}</a>
+                <span *ngSwitchDefault class="title">{{ item.title }}</span>
+              </ng-container>
+              <div class="tags">
+                @for (t of item.tags; track t) { <span class="tag" [title]="t">{{ lastSegment(t) }}</span> }
+              </div>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+    @if (!(activity$ | async)?.length) { <div class="empty">No recent activity — notes, videos and links will appear here.</div> }
+
+    <div class="activity-summary" aria-hidden="false">
+      all {{ counts?.notes ?? 0 }} notes · all {{ counts?.videos ?? 0 }} references · all {{ counts?.links ?? 0 }} articles
+    </div>
+  </section>
+</article>

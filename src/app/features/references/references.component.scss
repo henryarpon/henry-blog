@@ -1,0 +1,8 @@
+/* Video grid styles kept minimal; global tokens drive layout */
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem; }
+.video-card { background:transparent; border:1px solid transparent; border-radius:6px; overflow:hidden; }
+.thumb { position:relative; padding-top:56.25%; background:#222; }
+.thumb img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.card-body { padding:0.5rem; }
+.card-title { font-family:var(--font-serif); font-weight:700; font-size:1rem; color:var(--title-color); margin:0 0 0.25rem 0; }
+.card-desc { font-family:var(--font-ui); color:var(--muted); margin:0; }
